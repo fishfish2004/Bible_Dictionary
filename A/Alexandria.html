@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Alexanderia</title>
+  <style>
+    body {
+      font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0 16px 32px 16px;
+    }
+    h1 {
+      margin-top: 36px;
+      margin-bottom: 20px;
+      font-size: 2em;
+      color: #1565c0;
+      letter-spacing: 1px;
+      font-weight: 600;
+      text-align: left;
+    }
+    .popup-tip {
+      display: inline-block;
+      position: relative;
+      color: #1565c0;
+      border-bottom: 1px dashed #b0c4de;
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+    .popup-tip:hover {
+      color: #0d47a1;
+    }
+    .entry-link {
+      color: #1565c0;
+      text-decoration: none;
+      border-bottom: 1px dashed #b0c4de;
+      transition: color 0.2s;
+    }
+    .entry-link:hover {
+      color: #e67e22;
+      text-decoration: underline;
+    }
+    .popup-content {
+      display: none;
+      position: absolute;
+      z-index: 20;
+      min-width: 180px;
+      background: #fffbe7;
+      color: #333;
+      border: 1px solid #eedc82;
+      border-radius: 7px;
+      padding: 10px 15px;
+      top: 130%; /* 始终向下弹出 */
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.13);
+      font-size: 0.98em;
+      line-height: 1.5;
+      white-space: normal;
+      word-break: break-all;
+    }
+    .popup-tip.active .popup-content {
+      display: block;
+      animation: fadeIn 0.2s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px);}
+      to   { opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <h1>Alexandria</h1>
+  <p style="margin-top: 10px;">
+    埃及的一座城市，位于尼罗河三角洲附近，公元一世纪时人口约有一百万，其中有大片犹太人聚居区。城中最著名的犹太学者为斐洛。至于是谁在此建立了基督徒团体，虽有传说归功于马尔谷，但并无确切记载。
+    <span class="popup-tip" onclick="togglePopup(event)">
+      《宗徒大事录》十八章二十四节
+      <span class="popup-content">有一个在亚历山大里亚出生的犹太人，名叫阿颇罗，是个有口才的人，长于圣经，他到了厄弗所。</span>
+    </span>
+    记载，这里是<a class="entry-link" href="A/Apollos.html">阿颇罗</a>
+    的出生地。《致希伯来人书》的创作地点很有可能是亚历山大城，其中的思想和观点与斐洛有许多相似之处。
+  </p>
+  <script>
+    function togglePopup(event) {
+      // 关闭其他已打开的
+      document.querySelectorAll('.popup-tip.active').forEach(function(el){
+        if (el !== event.currentTarget) el.classList.remove('active');
+      });
+      // 当前弹窗开关
+      event.currentTarget.classList.toggle('active');
+      // 阻止冒泡
+      event.stopPropagation();
+    }
+    // 点击空白关闭
+    document.addEventListener('click', function(){
+      document.querySelectorAll('.popup-tip.active').forEach(function(el){
+        el.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
