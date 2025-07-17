@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Alexanderia</title>
+  <style>
+    body {
+      font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0 16px 32px 16px;
+    }
+    h1 {
+      margin-top: 36px;
+      margin-bottom: 20px;
+      font-size: 2em;
+      color: #1565c0;
+      letter-spacing: 1px;
+      font-weight: 600;
+      text-align: left;
+    }
+    .popup-tip {
+      display: inline-block;
+      position: relative;
+      color: #1565c0;
+      border-bottom: 1px dashed #b0c4de;
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+    .popup-tip:hover {
+      color: #0d47a1;
+    }
+    .entry-link { /*以下两部分是链接跳转*/
+      color: #1565c0;
+      text-decoration: none;
+      border-bottom: 1px dashed #b0c4de;
+      transition: color 0.2s;
+    }
+    .entry-link:hover {
+      color: #e67e22;
+      text-decoration: underline;
+    }
+    .popup-content {
+      display: none;
+      position: absolute;
+      z-index: 20;
+      min-width: 180px;
+      background: #fffbe7;
+      color: #333;
+      border: 1px solid #eedc82;
+      border-radius: 7px;
+      padding: 10px 15px;
+      top: 130%; /* 始终向下弹出 */
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.13);
+      font-size: 0.98em;
+      line-height: 1.5;
+      white-space: normal;
+      word-break: break-all;
+    }
+    .popup-tip.active .popup-content {
+      display: block;
+      animation: fadeIn 0.2s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px);}
+      to   { opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <h1>Alexandria</h1>
+  <p style="margin-top: 10px;">
+    一位亚历山大城的犹太人，据说能“准确地讲授有关耶稣的事”（参见
+    <span class="popup-tip" onclick="togglePopup(event)">
+        《宗徒大事录》18:25
+      <span class="popup-content">
+        这人学过主的道理，讲论耶稣的事，心神热烈，教训人也很详实，却只知若翰的洗礼。（《宗徒大事录》18:25）
+      </span>
+    </span>
+    ），但令人惊讶的是，“只知道若翰的洗礼”。普黎斯基拉（Priscilla）与阿桂拉（Aquila）补足了他知识上的不足。在格林多，阿颇罗很快成为一位重要的教师，甚至在一部分人之中受到比保禄更高的尊敬（参见
+    <span class="popup-tip" onclick="togglePopup(event)">
+        《格林多前书》1:11-12；4:6-7
+        <span class="popup-content">
+            因为，我的弟兄们，我由黑罗厄的家人听说你们中发生了纷争。我的意思是说，你们各自声称：我是属保禄的，我是属阿颇罗的，我是属刻法的，我是属基督的。（《格林多前书》1:11-12）弟兄们，我为了你们的缘故，把这些事贴在我自己和阿颇罗身上，好叫你们跟我们学习“不可越过所记载的”，免得有人自大，高看这个，鄙视那个。谁使你异于别人呢？你有什么不是领受的呢？既然是领受的，为什么你还夸耀，好像不是领受的呢？（《格林多前书》4:6-7）
+        </span>
+    </span>
+    ）。后来他返回厄弗所，并婉拒了保禄对他再次前往格林多的热情邀请（参见
+    <span class="popup-tip" onclick="togglePopup(event)">
+        《格林多前书》16:12
+        <span class="popup-content">
+            关于阿颇罗弟兄，我多次恳求他，要他同弟兄们一起到你们那里去，但他决没有意思如今去；一有好机会，他一定会去。（《格林多前书》16:12）
+        </span>
+    </span>
+    ）。或许他们都认为，他的缺席有助于当地教会的和谐。由于《希伯来书》在文体和用词上与亚历山大的犹太教有明显相似之处，有学者提出阿颇罗可能是该书的作者。如果如此，这封书信可能主要是写给格林多教会中希伯来裔的信友（参见
+    <span class="popup-tip" onclick="togglePopup(event)">
+        《格林多后书》11:22
+        <span class="popup-content">
+            其实，若有人在什么事上敢夸耀──我狂妄地说：我也敢。他们是希伯来人？我也是。他们是以色列人？我也是。他们是亚巴郎的苗裔？我也是。（《格林多后书》11:22）
+        </span>
+    </span>
+    ），大约成书于公元53年。
+  </p>
+  <script>
+    function togglePopup(event) {
+      // 关闭其他已打开的
+      document.querySelectorAll('.popup-tip.active').forEach(function(el){
+        if (el !== event.currentTarget) el.classList.remove('active');
+      });
+      // 当前弹窗开关
+      event.currentTarget.classList.toggle('active');
+      // 阻止冒泡
+      event.stopPropagation();
+    }
+    // 点击空白关闭
+    document.addEventListener('click', function(){
+      document.querySelectorAll('.popup-tip.active').forEach(function(el){
+        el.classList.remove('active');
+      });
+    });
+  </script>
+  <p style="margin-top: 10px;">
+    作者注：
+
+保禄时代的格林多教会分裂成“保禄派”、“阿颇罗派”、“刻法派”等（《格林多前书》1:12）。保禄为此多次劝勉大家“我们都是基督的”，不要分党分派。
+
+恭读《格》书，我深深感到保禄的真诚。这种真诚在过去就很少见，在如今的世界几乎已全然不可见的了。虚伪或许不是某个人的错误，因为坦承自己的软弱注定要遭到讥讽和嘲笑，但也出于这个原因，真诚无疑是最为勇敢的义举。我的成长当中缺少了父亲，没有人告诉我这些道理、为我指明正确的方向，但愿我不会误入迷途。
+  </p>
+</body>
+</html>
