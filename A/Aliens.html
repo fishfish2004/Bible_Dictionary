@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Aliens</title>
+  <style>
+    body {
+      font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0 16px 32px 16px;
+    }
+    h1 {
+      margin-top: 36px;
+      margin-bottom: 20px;
+      font-size: 2em;
+      color: #1565c0;
+      letter-spacing: 1px;
+      font-weight: 600;
+      text-align: left;
+    }
+    .popup-tip {
+      display: inline-block;
+      position: relative;
+      color: #1565c0;
+      border-bottom: 1px dashed #b0c4de;
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+    .popup-tip:hover {
+      color: #0d47a1;
+    }
+    .entry-link { /*以下两部分是链接跳转*/
+      color: #1565c0;
+      text-decoration: none;
+      border-bottom: 1px dashed #b0c4de;
+      transition: color 0.2s;
+    }
+    .entry-link:hover {
+      color: #e67e22;
+      text-decoration: underline;
+    }
+    .popup-content {
+      display: none;
+      position: absolute;
+      z-index: 20;
+      min-width: 180px;
+      background: #fffbe7;
+      color: #333;
+      border: 1px solid #eedc82;
+      border-radius: 7px;
+      padding: 10px 15px;
+      top: 130%; /* 始终向下弹出 */
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.13);
+      font-size: 0.98em;
+      line-height: 1.5;
+      white-space: normal;
+      word-break: break-all;
+    }
+    .popup-tip.active .popup-content {
+      display: block;
+      animation: fadeIn 0.2s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px);}
+      to   { opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <h1>Aliens 外侨</h1>
+  <p style="margin-top: 10px;">
+    寄居在以色列的外侨，应当受到宽厚的对待
+    <span class="popup-tip" onclick="togglePopup(event)">
+        （出谷纪22:20-21；23:9）
+        <span class="popup-content">
+            对外侨，不要苛待和压迫，因为你们在埃及也曾侨居过。对任何寡妇和孤儿，不可苛待；（出谷纪22:20-21）不可压迫外侨，因为你们在埃及国也作过外侨，明了在外作客的心情。（出谷纪23:9）
+        </span>
+    </span>
+    。但周边接壤的国家则可能是潜在的敌人。 <a class="entry-link" href="../J/Josiah.html">约史雅</a>（公元前621年）的改革加剧了以色列人对这些国家的反感；凡受外邦信仰影响的宗教习俗都被清除，并且禁止与非以色列人通婚
+    <span class="popup-tip" onclick="togglePopup(event)">
+        （申命纪7:3）
+        <span class="popup-content">
+            不可与他们通婚，不可将你的女儿嫁给他们的儿子，也不可为你的儿子娶他们的女儿；
+        </span>
+      </span>
+      。对某些人来说， <a class="entry-link" href="../E/Exile.html">巴比伦之囚</a>的经历进一步强化了这种民族主义情绪，但总体而言，归回时期的 <a class="entry-link" href="../J/Judaism.html">犹太教</a>融合了多种外来文化，只有少数人对此表示抵制。
+  </p>
+  <script>
+    function togglePopup(event) {
+      // 关闭其他已打开的
+      document.querySelectorAll('.popup-tip.active').forEach(function(el){
+        if (el !== event.currentTarget) el.classList.remove('active');
+      });
+      // 当前弹窗开关
+      event.currentTarget.classList.toggle('active');
+      // 阻止冒泡
+      event.stopPropagation();
+    }
+    // 点击空白关闭
+    document.addEventListener('click', function(){
+      document.querySelectorAll('.popup-tip.active').forEach(function(el){
+        el.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
