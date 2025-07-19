@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Alexanderia</title>
+  <style>
+    body {
+      font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0 16px 32px 16px;
+    }
+    h1 {
+      margin-top: 36px;
+      margin-bottom: 20px;
+      font-size: 2em;
+      color: #1565c0;
+      letter-spacing: 1px;
+      font-weight: 600;
+      text-align: left;
+    }
+    .popup-tip {
+      display: inline-block;
+      position: relative;
+      color: #1565c0;
+      border-bottom: 1px dashed #b0c4de;
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+    .popup-tip:hover {
+      color: #0d47a1;
+    }
+    .entry-link { /*以下两部分是链接跳转*/
+      color: #1565c0;
+      text-decoration: none;
+      border-bottom: 1px dashed #b0c4de;
+      transition: color 0.2s;
+    }
+    .entry-link:hover {
+      color: #e67e22;
+      text-decoration: underline;
+    }
+    .popup-content {
+      display: none;
+      position: absolute;
+      z-index: 20;
+      min-width: 180px;
+      background: #fffbe7;
+      color: #333;
+      border: 1px solid #eedc82;
+      border-radius: 7px;
+      padding: 10px 15px;
+      top: 130%; /* 始终向下弹出 */
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.13);
+      font-size: 0.98em;
+      line-height: 1.5;
+      white-space: normal;
+      word-break: break-all;
+    }
+    .popup-tip.active .popup-content {
+      display: block;
+      animation: fadeIn 0.2s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px);}
+      to   { opacity: 1; transform: translateY(0);}
+    }
+    table {
+    width: 480px;
+    border-collapse: collapse;
+    background: #fff;
+    margin: 24px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    th, td {
+    border: 1px solid #b0c4de;
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 1em;
+    }
+    th {
+    background: #e3edf8;
+    color: #1565c0;
+    font-weight: 600;
+    }
+    tr:nth-child(even) td {
+    background: #f5f8fb;
+    }
+   .year {
+    white-space: nowrap;
+    color: #405070;
+    font-weight: 500;
+    }
+   .name {
+    color: #283593;
+    }
+   .note {
+    color: #6d6d6d;
+    font-size: 0.96em;
+    }
+</style>
+
+</head>
+<body>
+  <h1>Alexandria</h1>
+  <p style="margin-top: 10px;">
+    原为古罗马一个贵族家族的名称，后由<a class="entry-link" href="../A/Augustus.html">屋大维</a>所承袭，他是凯撒的养子。奥古斯都又将此名传给其养子<a class="entry-link" href="../T/Tiberius.html">提比略</a>。此后，该称号继续为加里古拉（Caligula）、<a class="entry-link" href="../C/Claudius.html">克劳狄乌斯</a>及<a class="entry-link" href="../N/Nero.html">尼禄</a>等皇帝所沿用。自此以后，历代罗马皇帝不仅自称“凯撒”，亦将此名作为皇位继承人的尊号。他们的权力得以施展，乃因兼具法律权威与卓越的政治智慧。在新约时代执政的“凯撒”有如下几位：
+  </p>
+  <script>
+    function togglePopup(event) {
+      // 关闭其他已打开的
+      document.querySelectorAll('.popup-tip.active').forEach(function(el){
+        if (el !== event.currentTarget) el.classList.remove('active');
+      });
+      // 当前弹窗开关
+      event.currentTarget.classList.toggle('active');
+      // 阻止冒泡
+      event.stopPropagation();
+    }
+    // 点击空白关闭
+    document.addEventListener('click', function(){
+      document.querySelectorAll('.popup-tip.active').forEach(function(el){
+        el.classList.remove('active');
+      });
+    });
+  </script>
+  <table>
+    <tr>
+      <th>在位时间</th>
+      <th>皇帝</th>
+    </tr>
+    <tr>
+      <td class="year">前27–公元14</td>
+      <td class="name">奥古斯都</td>
+    </tr>
+    <tr>
+      <td class="year">14–37</td>
+      <td class="name">提庇留</td>
+    </tr>
+    <tr>
+      <td class="year">37–41</td>
+      <td class="name">盖乌斯<span class="note">（部队赐号“卡利古拉”）</span></td>
+    </tr>
+    <tr>
+      <td class="year">41–54</td>
+      <td class="name">克劳狄</td>
+    </tr>
+    <tr>
+      <td class="year">54–68</td>
+      <td class="name">尼禄</td>
+    </tr>
+    <tr>
+      <td class="year">68–69</td>
+      <td class="name">加尔巴</td>
+    </tr>
+    <tr>
+      <td class="year">69</td>
+      <td class="name">奥托；维特利乌斯</td>
+    </tr>
+    <tr>
+      <td class="year">69–79</td>
+      <td class="name">韦斯帕西安</td>
+    </tr>
+    <tr>
+      <td class="year">79–81</td>
+      <td class="name">提图斯</td>
+    </tr>
+    <tr>
+      <td class="year">81–96</td>
+      <td class="name">多米提安</td>
+    </tr>
+    <tr>
+      <td class="year">98–117</td>
+      <td class="name">图拉真</td>
+    </tr>
+    <tr>
+      <td class="year">117–138</td>
+      <td class="name">哈德良</td>
+    </tr>
+  </table>
+  
+</body>
+</html>

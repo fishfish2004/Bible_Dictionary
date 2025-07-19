@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Apologetic</title>
+  <style>
+    body {
+      font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0 16px 32px 16px;
+    }
+    h1 {
+      margin-top: 36px;
+      margin-bottom: 20px;
+      font-size: 2em;
+      color: #1565c0;
+      letter-spacing: 1px;
+      font-weight: 600;
+      text-align: left;
+    }
+    .popup-tip {
+      display: inline-block;
+      position: relative;
+      color: #1565c0;
+      border-bottom: 1px dashed #b0c4de;
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+    .popup-tip:hover {
+      color: #0d47a1;
+    }
+    .entry-link { /*以下两部分是链接跳转*/
+      color: #1565c0;
+      text-decoration: none;
+      border-bottom: 1px dashed #b0c4de;
+      transition: color 0.2s;
+    }
+    .entry-link:hover {
+      color: #e67e22;
+      text-decoration: underline;
+    }
+    .popup-content {
+      display: none;
+      position: absolute;
+      z-index: 20;
+      min-width: 180px;
+      background: #fffbe7;
+      color: #333;
+      border: 1px solid #eedc82;
+      border-radius: 7px;
+      padding: 10px 15px;
+      top: 130%; /* 始终向下弹出 */
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.13);
+      font-size: 0.98em;
+      line-height: 1.5;
+      white-space: normal;
+      word-break: break-all;
+    }
+    .popup-tip.active .popup-content {
+      display: block;
+      animation: fadeIn 0.2s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px);}
+      to   { opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <h1>Apologetic 护教</h1>
+  <p style="margin-top: 10px;">
+    为信仰辩护，严格按照宗教语境，即“护教”，正如纽曼的《捍卫我的生命》（Apologia pro Vita Sua，1864）副标题所说的：“为自己的一生辩护”。在旧约和新约中，都有许多护教的例证。例如，《依撒意亚书》四十至五十五章颂扬以色列天主的超越性，并将祂与外邦人的虚无偶像加以对比。<a class="entry-link" href="../P/Philo.html">斐洛</a>和<a class="entry-link" href="../J/Josephus.html">约瑟夫斯</a>也都曾写作，向外邦人推荐犹太教；在亚历山大城，斐洛坚持认为希伯来传统与希腊文化一样古老且值得尊重；在<a class="entry-link" href="../R/Rome.html">罗马</a>，约瑟夫斯在其多部著作中解释，犹太人的叛乱只是由少部分激进分子煽动的。
+《宗徒大事录》同样带有护教目的，尽管这可能不是全书的主要目标。正如第三部福音书中，百夫长在十字架下宣称耶稣“无罪”一样，在《宗徒大事录》中，基督徒被描绘为遵纪守法的罗马公民。如果他们受到迫害，是因为有一些犹太人设法阻挠福音的传播。罗马官员（如<a class="entry-link" href="../G/Gallio.html">加里雍</a>等人）被描写为对保禄友善，保禄也以自己的罗马公民身份自豪，并善加利用（见
+    <span class="popup-tip" onclick="togglePopup(event)">
+        《宗徒大事录》22:27
+      <span class="popup-content">
+        千夫长就前来问保禄说：“告诉我，你是罗马人吗？”保禄说：“是。”（《宗徒大事录》22:27）
+      </span>
+    </span>
+    ）。
+  </p>
+  <script>
+    function togglePopup(event) {
+      // 关闭其他已打开的
+      document.querySelectorAll('.popup-tip.active').forEach(function(el){
+        if (el !== event.currentTarget) el.classList.remove('active');
+      });
+      // 当前弹窗开关
+      event.currentTarget.classList.toggle('active');
+      // 阻止冒泡
+      event.stopPropagation();
+    }
+    // 点击空白关闭
+    document.addEventListener('click', function(){
+      document.querySelectorAll('.popup-tip.active').forEach(function(el){
+        el.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
